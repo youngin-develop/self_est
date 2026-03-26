@@ -9,6 +9,7 @@ This project is a high-performance, modern web application designed to facilitat
     *   Modern CSS Reset and baseline styling.
     *   Responsive layout targeting mobile and desktop.
     *   Interactive partnership form with validation.
+    *   **Disqus Integration:** Added community comments section for user engagement.
 
 ## **Current Plan: Partnership Form Implementation**
 

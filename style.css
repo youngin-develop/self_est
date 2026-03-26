@@ -80,3 +80,11 @@ input:focus, textarea:focus {
   gap: 0.5rem;
 }
 .submit-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+.comments-section {
+  margin-top: 4rem;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lifted);
+}
