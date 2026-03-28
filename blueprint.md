@@ -1,28 +1,34 @@
-# **Project Overview: Modern Partnership Portal**
+# **Project Overview: Young-in's Birthday Party Portal**
 
-This project is a high-performance, modern web application designed to facilitate partnership requests through a sleek, accessible form integrated with Formspree. It leverages framework-less web standards (Baseline) for maximum efficiency and longevity.
+This project is a vibrant, interactive web application designed to celebrate Young-in's birthday. It features a festive design, interactive elements like fireworks, and a heartwarming message for friends. It leverages framework-less web standards (Baseline) and modern CSS/JS for an optimal user experience.
 
 ## **Project Outline & Implemented Features**
 
-*   **Initial Setup (v1.0.0):**
-    *   Basic HTML5 structure with ES Modules support.
-    *   Modern CSS Reset and baseline styling.
-    *   Responsive layout targeting mobile and desktop.
-    *   Interactive partnership form with validation.
-    *   **Disqus Integration:** Added community comments section for user engagement.
+*   **Festive Design (v1.1.0):**
+    *   Vibrant, celebratory color palette using `oklch`.
+    *   Expressive typography and party-themed iconography.
+    *   Responsive layout for all devices.
+    *   **Interactive Fireworks:** A button that triggers a colorful confetti/fireworks effect using `canvas-confetti`.
+    *   **Heartwarming Message:** A button that displays a special thank-you message: "생일축하해줘서 고마워 유빈아 사랑행".
+    *   **Disqus Integration:** Kept for friends to leave birthday wishes.
 
-## **Current Plan: Partnership Form Implementation**
+## **Current Plan: Birthday Celebration Implementation**
 
 1.  **UI/UX Design:**
-    *   Implement a "lifted" card design using multi-layered drop shadows.
-    *   Use a vibrant color palette with `oklch` for perceptually uniform colors.
-    *   Apply a subtle noise texture to the background for a premium feel.
-    *   Ensure accessibility with proper labels and ARIA attributes.
+    *   Update colors to be more festive (pinks, purples, golds).
+    *   Add floating animations or festive background elements.
+    *   Ensure buttons have a "glow" effect and satisfying hover states.
 
 2.  **Implementation Steps:**
-    *   **HTML:** Update `index.html` with a semantic `<form>` structure pointing to the Formspree endpoint.
-    *   **CSS:** Update `style.css` with modern features like `@container`, `:has()`, and CSS Variables for theming.
-    *   **JS:** Update `main.js` to handle form interactions and potentially a custom success message.
-    *   **Validation:** Verify the form's responsiveness and accessibility.
-
-3.  **Endpoint:** `https://formspree.io/f/mqegkgpl`
+    *   **HTML:**
+        *   Change title to "영인이 생일파티에 온걸 환영해!".
+        *   Add two main interactive buttons.
+        *   Include `canvas-confetti` library via CDN.
+        *   Create a placeholder for the special message.
+    *   **CSS:**
+        *   Update variables for a festive theme.
+        *   Add animations for a "party" feel.
+        *   Style the special message container with elegant typography.
+    *   **JS:**
+        *   Implement the fireworks logic using `confetti()`.
+        *   Implement the button logic to reveal the special message with a smooth fade-in.

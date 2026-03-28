@@ -3,67 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Partnership Request | Modern Portal</title>
+  <title>영인이 생일파티! 🎂</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </head>
 <body>
+  <div class="background-decorations" aria-hidden="true">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
   <div class="container">
     <header class="header">
-      <h1>제휴 제안하기</h1>
-      <p>우리의 비전을 함께할 멋진 파트너를 기다립니다.</p>
+      <div class="icon-wrap">✨ 🎂 ✨</div>
+      <h1>영인이 생일파티에 온걸 환영해!</h1>
+      <p class="subtitle">오늘은 영인이의 특별한 날이에요!</p>
     </header>
     
-    <main class="form-wrapper">
-      <form action="https://formspree.io/f/mqegkgpl" method="POST" id="partnership-form">
-        <div class="form-group">
-          <label for="full-name">성함 / 담당자명</label>
-          <input type="text" id="full-name" name="name" placeholder="홍길동" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="email">이메일 주소</label>
-          <input type="email" id="email" name="_replyto" placeholder="example@company.com" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="organization">회사 / 단체명</label>
-          <input type="text" id="organization" name="organization" placeholder="회사명을 입력해주세요">
-        </div>
-        
-        <div class="form-group">
-          <label for="website">웹사이트 (선택사항)</label>
-          <input type="url" id="website" name="website" placeholder="https://">
-        </div>
-        
-        <div class="form-group">
-          <label for="proposal">제휴 제안 내용</label>
-          <textarea id="proposal" name="message" placeholder="제휴하고 싶은 내용에 대해 자유롭게 작성해주세요" rows="6" required></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">
-          제안서 보내기
-          <span class="icon">🚀</span>
+    <main class="interaction-card">
+      <div class="button-group">
+        <button id="fireworks-btn" class="party-btn confetti-btn">
+          <span class="btn-icon">🎉</span>
+          영인이 생일파티에 온걸 축하해
         </button>
-      </form>
+        
+        <button id="meat-party-btn" class="party-btn meat-btn">
+          <span class="btn-icon">🥩</span>
+          노원에서 고기파티
+        </button>
+      </div>
+
+      <div id="message-container" class="message-container">
+        <p id="special-message" class="special-text"></p>
+      </div>
     </main>
     
     <!-- Disqus 댓글 섹션 -->
     <section class="comments-section">
+      <h3>방명록에 축하 메시지를 남겨주세요! ✍️</h3>
       <div id="disqus_thread"></div>
       <script>
-          /**
-          *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-          *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-          /*
-          var disqus_config = function () {
-          this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-          this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-          };
-          */
-          (function() { // DON'T EDIT BELOW THIS LINE
+          (function() { 
           var d = document, s = d.createElement('script');
           s.src = 'https://youngin.disqus.com/embed.js';
           s.setAttribute('data-timestamp', +new Date());
@@ -74,7 +59,7 @@
     </section>
 
     <footer class="footer">
-      <p>&copy; 2026 Modern Partnership Portal. All rights reserved.</p>
+      <p>&copy; 2026 Young-in's Birthday Party. Made with ❤️</p>
     </footer>
   </div>
   <script defer type="text/javascript" src="main.js"></script>
