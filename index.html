@@ -61,7 +61,8 @@
         <style>
             :host {
                 display: block;
-                background: var(--card-bg);
+                background: var(--bg-card-fallback, #1a1a20);
+                background: var(--bg-card);
                 border-radius: 24px;
                 padding: 24px;
                 box-shadow: var(--shadow-deep);
@@ -69,6 +70,8 @@
                 cursor: pointer;
                 position: relative;
                 overflow: hidden;
+                color: var(--text-main-fallback, #f0f0f5);
+                color: var(--text-main);
             }
             :host(:hover) {
                 transform: translateY(-8px);

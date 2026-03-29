@@ -17,6 +17,12 @@
 
 @layer base {
     :root {
+        /* Fallbacks for older browsers */
+        --bg-main-fallback: #121216;
+        --bg-card-fallback: #1a1a20;
+        --text-main-fallback: #f0f0f5;
+        --accent-color-fallback: #4ade80;
+
         --bg-main: oklch(18% 0.02 260);
         --bg-card: oklch(24% 0.03 260);
         --text-main: oklch(95% 0.01 260);
@@ -29,11 +35,18 @@
         --shadow-glow: 0 0 30px -5px oklch(75% 0.18 160 / 0.3);
     }
 
+    body {
+        background-color: var(--bg-main-fallback);
+        background-color: var(--bg-main);
+        color: var(--text-main-fallback);
+        color: var(--text-main);
+    }
+
     .noise-overlay {
         position: fixed;
         inset: 0;
-        z-index: 1000;
-        opacity: 0.05;
+        z-index: 5; /* Lowered z-index */
+        opacity: 0.03;
         pointer-events: none;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }

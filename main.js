@@ -44,13 +44,20 @@ class VibeCategoryCard extends HTMLElement {
     render() {
         const id = this.getAttribute('category-id');
         const category = CATEGORIES.find(c => c.id === id);
+        if (!category) return;
+
         const score = state.scores[id] || 0;
         const isDeficient = score > 0 && score < 60;
 
-        this.shadowRoot.querySelector('h3').textContent = category.name;
-        this.shadowRoot.querySelector('.icon').textContent = category.icon;
-        this.shadowRoot.querySelector('.status').textContent = score > 0 ? `${score}% 성장` : '진단 대기 중';
-        this.shadowRoot.querySelector('.progress-fill').style.width = `${score}%`;
+        const h3 = this.shadowRoot.querySelector('h3');
+        const icon = this.shadowRoot.querySelector('.icon');
+        const status = this.shadowRoot.querySelector('.status');
+        const progressFill = this.shadowRoot.querySelector('.progress-fill');
+
+        if (h3) h3.textContent = category.name;
+        if (icon) icon.textContent = category.icon;
+        if (status) status.textContent = score > 0 ? `${score}% 성장` : '진단 대기 중';
+        if (progressFill) progressFill.style.width = `${score}%`;
 
         // Deficiency Badge
         let badge = this.shadowRoot.querySelector('.deficiency-alert');
