@@ -1,57 +1,40 @@
-# **VIBE-Self: The Ultimate Self-Improvement Hub**
+# **Elevate: 자기객관화 기반 자기계발 플랫폼**
 
-## **Overview**
-VIBE-Self is a comprehensive self-improvement web application designed to help users assess, track, and improve across 10 key life areas. It features a modern, tactile interface that uses AI-driven logic to identify "deficiencies" and provide actionable solutions through an integrated AI search/consultant interface.
+## **서비스 개요**
+"Elevate"는 사용자가 자신의 삶을 구성하는 7대 핵심 분야(운동, 식단, 피부, 패션, 헤어, 연애, 본업)를 객관적으로 평가하고, 그 결과에 따라 AI가 맞춤형 정보와 성장을 위한 인사이트를 제공하는 플랫폼입니다.
 
-### **Core Capabilities**
-1. **Multi-Category Assessment:** Interactive evaluation for 10 life areas.
-2. **Deficiency Discovery:** Visual feedback system that highlights areas needing improvement.
-3. **AI Search & Consultant:** A simulated AI interface to find specific information and tips for each category.
-4. **Actionable Roadmap:** Personalized advice based on assessment results.
+## **프로젝트 상세 구조**
 
----
+### **1. 7대 핵심 분야 (Pillars)**
+*   **운동 (Exercise):** 체력, 근력, 유연성 등 신체 활동 수준 진단.
+*   **식단 (Diet):** 영양 균형, 수분 섭취, 식습관 규칙성 진단.
+*   **피부 (Skin):** 현재 피부 상태(수분, 탄력, 고민 등) 및 관리 수준 진단.
+*   **패션 (Fashion):** 스타일 이해도, 체형별 코디 역량, TPO 적합성 진단.
+*   **헤어 (Hair):** 모발 상태, 두피 관리, 스타일링 숙련도 진단.
+*   **연애 (Dating):** 대인관계 능력, 소통 스킬, 연애 가치관 정립도 진단.
+*   **본업 (Career):** 직무 전문성, 성과 지표, 자기계발 노력도 진단.
 
-## **Project Outline & Design**
+### **2. 핵심 기능**
+*   **자가 진단 시스템:** 각 분야별로 정교하게 설계된 질문지를 통해 '자기객관화' 수행.
+*   **AI 맞춤형 정보 (AI Insight):** 사용자의 진단 데이터에 기반하여, AI가 실시간으로 관련 최신 정보와 개선 팁을 검색 및 분석하여 출력.
+*   **성장 시각화:** 사용자의 상태를 분석하여 시각적 차트 또는 등급으로 표시하는 대시보드.
 
-### **Design Language (Premium Tactile)**
-*   **Colors:** Vibrant `oklch` palette with deep neutrals (`oklch(20% 0.05 260)` for backgrounds) and neon accents (`oklch(80% 0.2 150)` for growth).
-*   **Texture:** Subtle noise grain on the background for a high-end feel.
-*   **Typography:** Expressive headings (Inter/System Serif) with emphasized weight for clarity.
-*   **Effects:** Multi-layered soft shadows (`box-shadow`) to create "lifted" cards and "glowing" interactive elements.
-*   **Layout:** Responsive grid using `@container` queries to adapt from mobile to desktop.
+### **3. 디자인 시스템 (Aesthetics)**
+*   **테마:** "Vibrant Growth & Premium Clarity"
+*   **색상:** Deep Indigo (`oklch(20% 0.1 260)`), Vibrant Teal (`oklch(65% 0.2 180)`).
+*   **효과:** 배경의 미세 노이즈 텍스처, 다층 레이어 드롭 쉐도우, 글래스모피즘(Glassmorphism) 카드 스타일.
+*   **인터랙티브:** `:has()` 선택자를 활용한 동적 상태 강조, 부드러운 카드 전환 애니메이션.
 
-### **Technical Architecture**
-*   **Framework:** Vanilla JavaScript with ES Modules.
-*   **Components:** Custom Elements for `vibe-category-card`, `vibe-assessment-modal`, and `vibe-ai-search`.
-*   **State Management:** Simple reactive store for assessment scores and deficiency tracking.
-*   **CSS:** Layered architecture (`@layer`) for reset, base, and component styles.
-
----
-
-## **Implementation Plan**
-
-### **Step 1: Foundation & Layout**
-*   [x] Create `blueprint.md`
-*   [x] Create `index.html` with modern shell.
-*   [x] Set up `style.css` with `@layer` and modern CSS variables.
-*   [x] Initialize `main.js` with category data.
-
-### **Step 2: Core Components**
-*   [x] Build `<vibe-category-card>`
-*   [x] Build `<vibe-assessment-modal>` (Managed via main logic)
-*   [x] Build `<vibe-ai-search>` (Sidebar implementation)
-
-### **Step 3: Intelligence & Logic**
-*   [x] Implement Deficiency Logic.
-*   [x] Integrate AI Search logic (Mocked).
-
-### **Step 4: Polishing & Validation**
-*   [x] Final design touches and animations.
-*   [ ] Responsiveness and A11Y check.
+### **4. 기술 스택**
+*   **Core:** HTML5, CSS3 (Container Queries, Cascade Layers, oklch).
+*   **Logic:** Vanilla JavaScript (Web Components, ES Modules).
+*   **Data:** LocalStorage를 이용한 진단 데이터 저장 및 로드.
 
 ---
 
-## **Project State**
-*   **Status:** Initializing Foundation
-*   **Version:** 1.0.0
-*   **Last Updated:** 2026-03-29
+## **현재 구현 단계**
+*   [x] 프로젝트 기획 및 blueprint.md 작성
+*   [x] 기초 프로젝트 파일 구성 (`index.html`, `style.css`, `main.js`)
+*   [x] 7대 분야 자가 진단 UI 구현
+*   [x] AI 인사이트 생성 로직 및 시뮬레이션 구현
+*   [x] 대시보드 시각화 및 최종 디자인 폴리싱
