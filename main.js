@@ -9,10 +9,18 @@ const State = {
         dating: 0,
         career: 0
     },
+    workoutLogs: JSON.parse(localStorage.getItem('elevate-workout-logs')) || [],
     updateScore(pillar, score) {
         this.scores[pillar] = score;
         localStorage.setItem('elevate-scores', JSON.stringify(this.scores));
         window.dispatchEvent(new CustomEvent('state-change', { detail: { pillar, score } }));
+    },
+    addWorkoutLog(date, activity, duration) {
+        this.workoutLogs.push({ date, activity, duration });
+        // Keep only last 30 logs (roughly a month)
+        if (this.workoutLogs.length > 30) this.workoutLogs.shift();
+        localStorage.setItem('elevate-workout-logs', JSON.stringify(this.workoutLogs));
+        window.dispatchEvent(new CustomEvent('workout-log-change'));
     },
     getAverage() {
         const values = Object.values(this.scores);
@@ -126,6 +134,34 @@ class PillarCard extends HTMLElement {
                     margin-top: 1rem;
                 }
                 .active .assessment-mode { display: block; }
+                .workout-diary {
+                    margin-top: 1.5rem;
+                    padding-top: 1rem;
+                    border-top: 1px solid rgba(255, 255, 255, 0.1);
+                    display: none;
+                }
+                .active .workout-diary { display: block; }
+                .diary-input {
+                    background: rgba(0, 0, 0, 0.2);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 8px;
+                    padding: 0.5rem;
+                    color: white;
+                    width: 100%;
+                    margin-bottom: 0.5rem;
+                }
+                .diary-list {
+                    max-height: 150px;
+                    overflow-y: auto;
+                    font-size: 0.8rem;
+                    margin-top: 1rem;
+                }
+                .diary-item {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0.3rem 0;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                }
                 input[type="range"] {
                     width: 100%;
                     margin: 1rem 0;
@@ -140,6 +176,7 @@ class PillarCard extends HTMLElement {
                     font-weight: bold;
                     cursor: pointer;
                     width: 100%;
+                    margin-top: 0.5rem;
                 }
             </style>
             <div class="card" id="card">
@@ -153,6 +190,15 @@ class PillarCard extends HTMLElement {
                     <input type="range" min="0" max="100" value="${currentScore}" id="score-slider">
                     <button id="save-btn">진단 완료</button>
                 </div>
+                ${type === 'exercise' ? `
+                <div class="workout-diary" id="diary">
+                    <h4 style="margin-bottom: 0.5rem;">오늘의 운동 기록</h4>
+                    <input type="text" id="workout-act" class="diary-input" placeholder="운동 종류 (예: 러닝)">
+                    <input type="number" id="workout-dur" class="diary-input" placeholder="시간 (분)">
+                    <button id="add-log-btn" style="background: var(--accent-purple); color: white;">일지 기록</button>
+                    <div class="diary-list" id="log-list"></div>
+                </div>
+                ` : ''}
             </div>
         `;
 
@@ -164,7 +210,7 @@ class PillarCard extends HTMLElement {
         const fill = this.shadowRoot.querySelector('.score-fill');
 
         card.addEventListener('click', (e) => {
-            if (e.target.closest('#assessment')) return;
+            if (e.target.closest('#assessment') || e.target.closest('#diary')) return;
             card.classList.toggle('active');
         });
 
@@ -181,6 +227,33 @@ class PillarCard extends HTMLElement {
             const insightPanel = document.querySelector('ai-insight-panel');
             insightPanel.show(type, slider.value);
         });
+
+        if (type === 'exercise') {
+            const addLogBtn = this.shadowRoot.getElementById('add-log-btn');
+            const actInput = this.shadowRoot.getElementById('workout-act');
+            const durInput = this.shadowRoot.getElementById('workout-dur');
+            const logList = this.shadowRoot.getElementById('log-list');
+
+            const renderLogs = () => {
+                logList.innerHTML = State.workoutLogs.map(log => `
+                    <div class="diary-item">
+                        <span>${log.date} ${log.activity}</span>
+                        <span>${log.duration}분</span>
+                    </div>
+                `).join('');
+            };
+
+            addLogBtn.addEventListener('click', () => {
+                if (!actInput.value || !durInput.value) return;
+                const today = new Date().toLocaleDateString('ko-KR', { month: 'numeric', day: 'numeric' });
+                State.addWorkoutLog(today, actInput.value, durInput.value);
+                actInput.value = '';
+                durInput.value = '';
+                renderLogs();
+            });
+
+            renderLogs();
+        }
     }
 }
 customElements.define('pillar-card', PillarCard);
